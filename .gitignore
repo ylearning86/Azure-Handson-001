@@ -1,0 +1,27 @@
+# Azure
+*.publishsettings
+*.azurePubxml
+
+# Secrets
+*.key
+*.pem
+.env
+secrets/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary
+tmp/
+temp/
