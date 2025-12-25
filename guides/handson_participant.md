@@ -1,31 +1,6 @@
-# 参加者用ハンズオン手順書（Windows + AI）
+# 👩‍💻 参加者用ハンズオン手順書（Windows + AI）
 
-## 目次
-
-- [参加者用ハンズオン手順書（Windows + AI）](#参加者用ハンズオン手順書windows--ai)
-  - [ゴール](#ゴール)
-  - [1. 準備](#1-準備)
-    - [1-1. Azure にサインイン](#1-1-azure-にサインイン)
-    - [1-2. MFA（多要素認証）の登録](#1-2-mfa多要素認証の登録)
-    - [1-3. 権限（RBAC）の確認](#1-3-権限rbacの確認)
-    - [1-4. タグの設定](#1-4-タグの設定)
-    - [1-5. コストの確認](#1-5-コストの確認)
-  - [2. Windows VM を作ってみる（Portal 編）](#2-windows-vm-を作ってみるportal-編)
-    - [2-1. 仮想ネットワーク（VNet）](#2-1-仮想ネットワークvnet)
-    - [2-2. サブネット](#2-2-サブネット)
-    - [2-3. Windows VM（Public IP なし）](#2-3-windows-vmpublic-ip-なし)
-    - [2-4. Bastion でログイン](#2-4-bastion-でログイン)
-  - [3. Managed Identity で AI を呼び出す](#3-managed-identity-で-ai-を呼び出す)
-    - [3-1. VM の Managed Identity を ON](#3-1-vm-の-managed-identity-を-on)
-    - [3-2. Python セットアップ](#3-2-python-セットアップ)
-    - [3-3. AI スクリプト作成](#3-3-ai-スクリプト作成)
-    - [3-4. 要約を保存して持ち帰る](#3-4-要約を保存して持ち帰る)
-  - [4. 片付け](#4-片付け)
-  - [まとめ](#まとめ)
-  - [うまくいかない方へ](#うまくいかない方へ)
-  - [参考資料（運営向け）](#参考資料運営向け)
-
-## ゴール
+## 🎯 ゴール
 
 このハンズオンでは次を体験します。
 
@@ -40,7 +15,7 @@
 
 ---
 
-## 準備
+## 1️⃣ 準備
 
 ### 1-1. Azure にサインイン
 
@@ -87,7 +62,7 @@ name : <自分の名前（またはニックネーム）>
 
 ---
 
-## Windows VM を作ってみる（Portal 編）
+## 2️⃣ Windows VM を作ってみる（Portal 編）
 
 > Azure でサーバー（VM）を作る流れを体験します。
 
@@ -143,10 +118,9 @@ name : <自分の名前（またはニックネーム）>
 
 ---
 
-## Managed Identity で AI を呼び出す
+## 3️⃣ Managed Identity で AI を呼び出す
 
 > ここからが本番。**API キーなし** で AI を呼びます。
-> このハンズオンでは、サブネットNSGで Azure のみ（AzureCloud:443／AzurePlatformDNS:53）を許可し、一般のインターネット宛は遮断しています。
 
 ### 3-1. VM の Managed Identity を ON
 
@@ -206,7 +180,7 @@ python ai.py
 
 ---
 
-## 要約を保存して持ち帰る
+## 4️⃣ 要約を保存して持ち帰る
 
 ```powershell
 python ai.py > report.md
@@ -216,25 +190,14 @@ python ai.py > report.md
 
 ---
 
-## 片付け
+## 5️⃣ 片付け
 
 - Public IP が残っていないか確認  
 - 不要なリソースは削除
 
-**リソースグループを削除する場合は、以下のボタンから Azure Portal で確認・削除できます：**
-
-[![リソースグループを管理](https://img.shields.io/badge/Azure-リソースグループを管理-0078D4?style=for-the-badge&logo=microsoft-azure)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)
-
-または、Azure Cloud Shell で以下のコマンドを実行：
-
-```bash
-# リソースグループ名を指定して削除
-az group delete --name <リソースグループ名> --yes --no-wait
-```
-
 ---
 
-## まとめ
+## ✅ まとめ
 
 - Portal の基本操作  
 - Bastion による安全な接続  
@@ -242,20 +205,3 @@ az group delete --name <リソースグループ名> --yes --no-wait
 - AI で「上司向け要約」を自動生成  
 
 > **“安全に設計して使う AI” を体験できれば成功です！**
-
----
-
-## うまくいかない方へ
-
-- 下のボタンから Azure Portal でデプロイできます（Resource Group は事前に選択／作成してください）
-
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fylearning86%2FAzure-Handson-001%2Fmain%2Ftemplates%2Farm%2Fazuredeploy.json)
-
-※ フォークやブランチを使う場合は、上記 URL の `<org>` やブランチ名を実際のものに置き換えてください。
-
----
-
-## 参考資料（運営向け）
-
-- 講師向け運営マニュアル: [guides/handson_instructor.md](guides/handson_instructor.md)
-- 事前準備マニュアル: [guides/handson_prep.md](guides/handson_prep.md)
